@@ -1,0 +1,122 @@
+// Custom styles.
+
+/************************ 设置站点背景图片/颜色 ******************************/
+body{
+    background:url(/images/bg.jpg); // 设置背景图片
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+}
+
+/**************************** 自定义全站鼠标样式 ******************************/
+body {
+  cursor: url('https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@1.0/images/mouse.cur '),auto;
+}
+
+/********************** 设置内容，菜单栏，站点概况背景透明 ************************/
+// 注意： 通过opacity属性设置透明度会导致本地搜索框也是透明的
+// 设置内容背景透明
+.content-wrap {
+  background: rgba(255,255,255,0.9);
+}
+
+// 设置标题栏背景透明
+.header-inner{
+  background: rgba(255,255,255,0.8);
+}
+
+// 设置站点概况背景透明
+.sidebar-inner { 
+    background: rgba(255,255,255,0.8);
+}
+
+/* sidebar-inner在sidebar上面覆盖，所以为了实现文章内容，菜单栏，站点概况三个背景透明度一致这里设置透明度为0 */
+.sidebar {
+  background: rgba(255,255,255,0);
+}
+
+/************************** 设置标题栏背景色 ******************************/
+.site-meta {
+  background: rgba(0,0,0,0.5); //修改为自己喜欢的颜色
+}
+
+/*************************** 主页文章添加阴影效果 ***************************/
+.post {
+  margin: 0px -10px 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+
+/****************************** 自定义底部字体颜色 ****************************/
+.footer-inner {
+  color: rgba(255,255,255,0.8);
+}
+
+
+/****************************** 添加动态背景 ******************************/
+.bg_content {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+/****************************** 设置文章内超链接文本颜色 ******************************/
+// 设置普通的a标签 无序列表里的a标签 有序列表里的a标签
+if hexo-config("custom_content_link_css.post_body_a.enable")
+  .post-body p a,.post-body li a{
+      color: convert(hexo-config("custom_content_link_css.post_body_a.normal_color"));
+      border-bottom: none;
+      &:hover {
+        color: convert(hexo-config("custom_content_link_css.post_body_a.hover_color"));
+        text-decoration: underline;
+      }
+    } 
+  // 重置分类页面内链接和排行榜页面内超链接样式
+  .post-body a.category-list-link,.post-body .prefix a{
+    color: #555;
+    border-bottom: 1px solid #999;
+    &:hover {
+      color: #262a30;
+      border-bottom-color: #262a30;
+      text-decoration: none;
+    }
+  }
+
+/****************************** 自定义回到顶部样式 ******************************/
+.back-to-top {
+  right: 60px;
+  width: 54px;  //图片素材宽度
+  height: 700px;  //图片素材高度
+  top: -700px;
+  bottom: unset;
+  transition: all .5s ease-in-out;
+  background: url("/images/back_to_top.png");
+
+  //隐藏箭头图标
+  > i {
+    display: none;
+  }
+
+  &.back-to-top-on {
+    bottom: unset;
+    top: 100vh < (900px + 200px) ? calc( 100vh - 900px - 200px ) : 0px;
+  }
+}
+
+/****************************** 自定义页脚跳动的心样式 ******************************/
+@keyframes heartAnimate {
+    0%,100%{transform:scale(1);}
+    10%,30%{transform:scale(0.9);}
+    20%,40%,60%,80%{transform:scale(1.1);}
+    50%,70%{transform:scale(1.1);}
+}
+#animate {
+    animation: heartAnimate 1.33s ease-in-out infinite;
+}
+.with-love {
+    color: rgb(204,0,0); //rgb(255, 113, 168);
+}
